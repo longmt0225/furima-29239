@@ -78,6 +78,6 @@ Things you may want to cover:
 | phone_number     | string     | null: false, uniqueness: true  |
 | purchase         | references | null: false, foreign_key: true |
 ### Association
-- has_one :purchase dependent: :destroy
+- belongs-to :purchase
 
 
