@@ -53,7 +53,7 @@ Things you may want to cover:
 | prefecture_id    | integer    | null: false                    |
 | handling_time_id | integer    | null: false                    |
 ### Association
-- belongs_to :user dependent: :destroy
+- belongs_to :user 
 - has_one :purchase dependent: :destroy
 
 
@@ -63,8 +63,8 @@ Things you may want to cover:
 | item             | references | null: false, foreign_key: true |
 | user             | references | null: false, foreign_key: true |
 ### Association
-- belongs_to :user dependent: :destroy
-- belongs_to :item dependent: :destroy
+- belongs_to :user 
+- belongs_to :item 
 - has_one :address dependent: :destroy
 
 
