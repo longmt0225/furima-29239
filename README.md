@@ -47,8 +47,9 @@ Things you may want to cover:
 | name             | string     | null: false                    |
 | price            | integer    | null: false                    |
 | description      | text       | null: false                    |
-| user_id          | integer    | null: false                    |
+| user             | references | null: false,foreign_key: true  |
 | category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
 | postage_payer_id | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | handling_time_id | integer    | null: false                    |
@@ -72,7 +73,7 @@ Things you may want to cover:
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | post_code        | string     | null: false                    |
-| prefecture_id    | integer    | null: false, foreign_key: true |
+| prefecture_id    | integer    | null: false                    |
 | city             | string     | null: false                    |
 | building_name    | string     |                                |
 | phone_number     | string     | null: false, uniqueness: true  |
