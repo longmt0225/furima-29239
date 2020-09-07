@@ -9,29 +9,29 @@ class User < ApplicationRecord
 
   validates :nickname             , presence: true
 
-  validates :email                , presence: true, uniqueness: true
+  # validates :email                , presence: true, uniqueness: true
   
-  validates :password             , presence: true,
+  validates :password             , # presence: true
              format: { with: /\A(?=.*?[a-z])(?=.*?[\d])\w{6,128}\z/,
-             message: "は半角6~128文字英小文字・数字それぞれ１文字以上含む必要があります"}
+             message: "includes both letters and numbers"}
 
-  validates :password_confirmation, presence: true, length: { minimum: 6 }
+  # validates :password_confirmation, presence: true, length: { minimum: 6 }
   
   validates :family_name          , presence: true, 
              format: { with: /\A[ぁ-んァ-ン一-龥]/,
-             message: "は全角（漢字・ひらがな・カタカナ）で入力する必要があります"}
+             message: "Full-width characters"}
   
   validates :first_name          , presence: true, 
              format: { with: /\A[ぁ-んァ-ン一-龥]/,
-             message: "は全角（漢字・ひらがな・カタカナ）で入力する必要があります"}
+             message: "Full-width characters"}
 
   validates :family_name_kana    , presence: true, 
              format: { with: /\A[ァ-ヶー－]+\z/,
-             message: "は全角（カタカナ）で入力する必要があります"}
+             message: "Full-width katakana characters"}
   
   validates :first_name_kana     , presence: true, 
              format: { with: /\A[ァ-ヶー－]+\z/,
-             message: "は全角（カタカナ）で入力する必要があります"}
+             message: "Full-width katakana characters"}
 
   validates :birth_date           , presence: true
 
