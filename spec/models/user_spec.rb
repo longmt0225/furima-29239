@@ -15,6 +15,13 @@ describe User do
         @user.password_confirmation = 'aaa000'
         expect(@user).to be_valid
       end
+
+      it 'emailに@とドメインが存在する場合は登録できること' do
+        @user = FactoryBot.create(:user)
+        another_user = FactoryBot.build(:user, email: "sample@gmail.com")
+        another_user.valid?
+        expect(@user).to be_valid
+      end
     end
 
     context '新規登録がうまくいかないとき' do
@@ -28,6 +35,13 @@ describe User do
         @user.email = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
+      end
+
+      it 'emailに@とドメインがない場合は登録できないこと' do
+        @user = FactoryBot.create(:user)
+        another_user = FactoryBot.build(:user, email: 'testgmail')
+        another_user.valid?
+        expect(another_user.errors[:email]).to include("is invalid")
       end
 
       it '重複したemailが存在する場合登録できない' do
@@ -51,9 +65,16 @@ describe User do
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
 
-      it 'passwordが半角英数字混合でなければ登録できない' do
+      it 'passwordが半角英字のみでは登録できない' do
         @user.password = 'aaaaaa'
         @user.password_confirmation = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password includes both letters and numbers')
+      end
+
+      it 'passwordが半角数字のみでは登録できない' do
+        @user.password = '000000'
+        @user.password_confirmation = '000000'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password includes both letters and numbers')
       end

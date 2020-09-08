@@ -9,13 +9,9 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
 
-  # validates :email                , presence: true, uniqueness: true
-
   validates :password, # presence: true
             format: { with: /\A(?=.*?[a-z])(?=.*?[\d])\w{6,128}\z/,
                       message: 'includes both letters and numbers' }
-
-  # validates :password_confirmation, presence: true, length: { minimum: 6 }
 
   validates :family_name, presence: true,
                           format: { with: /\A[ぁ-んァ-ン一-龥]/,
