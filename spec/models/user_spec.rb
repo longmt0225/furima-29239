@@ -18,7 +18,7 @@ describe User do
 
       it 'emailに@とドメインが存在する場合は登録できること' do
         @user = FactoryBot.create(:user)
-        another_user = FactoryBot.build(:user, email: "sample@gmail.com")
+        another_user = FactoryBot.build(:user, email: 'sample@gmail.com')
         another_user.valid?
         expect(@user).to be_valid
       end
@@ -41,7 +41,7 @@ describe User do
         @user = FactoryBot.create(:user)
         another_user = FactoryBot.build(:user, email: 'testgmail')
         another_user.valid?
-        expect(another_user.errors[:email]).to include("is invalid")
+        expect(another_user.errors[:email]).to include('is invalid')
       end
 
       it '重複したemailが存在する場合登録できない' do
