@@ -12,23 +12,26 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   # Validation
-  validates :image, presence: true
+  with_options presence: true do
+    validates :image
 
-  validates :name, presence: true, length: { maximum: 40 }
+    validates :name, length: { maximum: 40 }
 
-  validates :description, presence: true, length: { maximum: 1000 }
+    validates :description, length: { maximum: 1000 }
+  end
 
-  # validates :user, presence: true, foreign_key: true
+  with_options numericality: { other_than: 1, message: 'Select' } do
+    validates :category_id
 
-  validates :category_id, presence: true, numericality: { other_than: 1, message: 'Select' }
+    validates :condition_id
 
-  validates :condition_id, presence: true, numericality: { other_than: 1, message: 'Select' }
+    validates :postage_payer_id
 
-  validates :postage_payer_id, presence: true, numericality: { other_than: 1, message: 'Select' }
+    validates :prefecture_id
 
-  validates :prefecture_id, presence: true, numericality: { other_than: 1, message: 'Select' }
+    validates :handling_time_id
+  end
 
-  validates :handling_time_id, presence: true, numericality: { other_than: 1, message: 'Select' }
-
-  validates :price, presence: true, numericality: { greater_than: 300, less_than: 10_000_000, message: 'Out of setting range' }
+    validates :price, presence: true, numericality: { greater_than: 300, less_than: 10_000_000, message: 'Out of setting range' }
+  
 end

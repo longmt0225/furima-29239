@@ -77,4 +77,5 @@ describe '商品出品機能' do
     @item.price = 9_999_999
     expect(@item).to be_valid
   end
+
 end
