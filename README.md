@@ -30,15 +30,15 @@ Things you may want to cover:
 | ---------------- | ---------- | ------------------------------ |
 | nickname         | string     | null: false                    |
 | email            | string     | null: false, uniqueness: true  |
-| password         | string     | null: false, uniqueness: true  |
+| password         | string     | null: false                    |
 | family_name      | string     | null: false                    |
 | first_name       | string     | null: false                    |
 | family_name_kana | string     | null: false                    |
 | first_name_kana  | string     | null: false                    |
 | birth_date       | date       | null: false                    |
 ### Association
-- has_many :items dependent: :destroy
-- has_many :purchases dependent: :destroy
+- has_many :items, dependent: :destroy
+- has_many :purchases, dependent: :destroy
 
 
 ## items テーブル
@@ -55,7 +55,7 @@ Things you may want to cover:
 | handling_time_id | integer    | null: false                    |
 ### Association
 - belongs_to :user 
-- has_one :purchase dependent: :destroy
+- has_one :purchase, dependent: :destroy
 
 
 ## purchases テーブル
@@ -66,7 +66,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user 
 - belongs_to :item 
-- has_one :address dependent: :destroy
+- has_one :address, dependent: :destroy
 
 
 ## addresses テーブル
