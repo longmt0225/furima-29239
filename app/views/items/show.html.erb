@@ -8,8 +8,7 @@
     </h2>
     <div class='item-img-content'>
         <%= image_tag @item.image, class:"item-box-img" if @item.image.attached? %>
-        <%# ↓サンプル %>
-        <%# image_tag "item-sample.png" ,class:"item-box-img" %>
+
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <% if @item.purchase != nil %>
         <div class='sold-out'>
@@ -17,6 +16,7 @@
         </div>
       <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
+
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -29,7 +29,7 @@
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
     <% if user_signed_in? && @item.user.id == current_user.id %>
-      <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
+      <%= link_to '商品の編集', edit_item_path(@item), method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
       <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
 
