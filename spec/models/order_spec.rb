@@ -23,6 +23,12 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     it '郵便番号にはハイフンが必須であること' do
+      @order_address.postal_code = '123-4567'
+      @order_address.valid?
+      expect(@order_address).to be_valid
+    end
+
+    it '郵便番号は3桁-4桁の形では登録できないこと' do
       @order_address.postal_code = '1234567'
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include('Postal code is invalid. Input correctly.')
@@ -65,11 +71,15 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     it '電話番号は10桁以上であること' do
+      @order_address.phone_number = '1234567890'
+      @order_address.valid?
+      expect(@order_address).to be_valid
+    end
+
+    it '電話番号は10桁未満では登録できないこと' do
       @order_address.phone_number = '123456789'
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input half-width numbers correctly.')
-      @order_address.phone_number = '1234567890'
-      expect(@order_address).to be_valid
     end
   end
 end
