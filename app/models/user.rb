@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   # Association
   has_many :items, dependent: :destroy
-  has_many :purchases, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_one  :card
 
   # Validation
   validates :nickname, presence: true
