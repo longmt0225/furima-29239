@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 
   # Association
   belongs_to :user
-  has_one :purchase, dependent: :destroy
+  has_one :order, dependent: :destroy
   has_one_attached :image
 
   # Validation

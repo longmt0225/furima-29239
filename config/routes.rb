@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   resources :items do 
     post :edit
+    resources :orders, only: [:index, :create]
   end
-
   
 end
 
