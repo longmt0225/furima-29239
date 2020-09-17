@@ -38,7 +38,7 @@ Things you may want to cover:
 | birth_date       | date       | null: false                    |
 ### Association
 - has_many :items, dependent: :destroy
-- has_many :purchases, dependent: :destroy
+- has_many :orders, dependent: :destroy
 
 
 ## items テーブル
@@ -55,10 +55,10 @@ Things you may want to cover:
 | handling_time_id | integer    | null: false                    |
 ### Association
 - belongs_to :user 
-- has_one :purchase, dependent: :destroy
+- has_one :order, dependent: :destroy
 
 
-## purchases テーブル
+## orders テーブル
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | item             | references | null: false, foreign_key: true |
@@ -75,10 +75,10 @@ Things you may want to cover:
 | post_code        | string     | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | city             | string     | null: false                    |
-| building_name    | string     |                                |
+| building         | string     |                                |
 | phone_number     | string     | null: false, uniqueness: true  |
-| purchase         | references | null: false, foreign_key: true |
+| order            | references | null: false, foreign_key: true |
 ### Association
-- belongs_to :purchase
+- belongs_to :order
 
 
