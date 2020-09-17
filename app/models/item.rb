@@ -32,6 +32,6 @@ class Item < ApplicationRecord
     validates :handling_time_id
   end
 
-  validates :price, presence: true, numericality: { ggreater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
 
 end
