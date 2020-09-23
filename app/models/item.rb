@@ -13,7 +13,7 @@ class Item < ApplicationRecord
 
   # Validation
   with_options presence: true do
-    validates :images
+    validates :image
 
     validates :name, length: { maximum: 40 }
 
