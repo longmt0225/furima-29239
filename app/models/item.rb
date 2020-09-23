@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   # Association
   belongs_to :user
   has_one :order, dependent: :destroy
-  has_one_attached :image
+  has_many_attached :images
 
   # Validation
   with_options presence: true do
