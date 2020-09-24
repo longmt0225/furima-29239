@@ -20,7 +20,7 @@ class Item < ApplicationRecord
     validates :description, length: { maximum: 1000 }
   end
 
-  with_options numericality: { other_than: 1, message: 'Select' } do
+  with_options numericality: { other_than: 1, message: 'を選択してください' } do
     validates :category_id
 
     validates :condition_id
@@ -32,6 +32,6 @@ class Item < ApplicationRecord
     validates :handling_time_id
   end
 
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は300円から9,999,999円の間で設定してください' }
 
 end
